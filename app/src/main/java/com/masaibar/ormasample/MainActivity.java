@@ -45,19 +45,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onClickSelect() {
-        OrmaUtil.runOnBackgroundThread(new Runnable() {
-            @Override
-            public void run() {
-                List<Todo> todoList =
-                        OrmaUtil.getInstance(getApplicationContext()).selectFromTodo().toList();
-                for (Todo todo : todoList) {
-                    Log.d(
-                            "!!!!",
-                            String.format("id = %d, title = %s, content = %s, time = %s",
-                                    todo.id, todo.title, todo.content, todo.createdTimeMillis)
-                    );
-                }
-            }
-        });
+        List<Todo> todos = OrmaUtil.getInstance(getApplicationContext())
+                .selectFromTodo().toList();
+
+        for (Todo todo : todos) {
+            Log.d("!!!!!", todo.toString());
+        }
     }
 }

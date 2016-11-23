@@ -25,4 +25,10 @@ public class Todo {
 
     @Column
     public long createdTimeMillis;
+
+    @Override
+    public String toString() {
+        return String.format("id = %s, title = %s, content = %s, time = %s",
+                id, title, content, createdTimeMillis);
+    }
 }
